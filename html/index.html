@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>convert3d</title>
+        <link rel="stylesheet" href="style.css?v=4" />
+    </head>
+    <body>
+        <main class="page">
+            <section class="hero">
+                <h1>Convert 3D</h1>
+                <p class="description">
+                    An effient 3D model converter with an interactive preview and downloadable output files.
+                </p>
+
+                <div class="upload-box">
+                    <div class="upload-box__content">
+                        <span class="drop-zone__icon">⬆️</span>
+                        <p class="drop-zone__title">Upload a 3D model</p>
+                        <p class="drop-zone__hint">Select a supported file and choose your output format</p>
+                        <p class="drop-zone__formats">Supported formats: OBJ, STL, PLY, GLTF, GLB, 3MF</p>
+                        <button id="browseBtn" class="browse-btn" type="button">Choose file</button>
+                        <input id="fileInput" class="file-input" type="file" accept="*/*" multiple aria-label="Choose a file" />
+                    </div>
+                </div>
+                <ul id="fileList" class="file-list">
+                    <li class="file-list__empty">No files selected yet.</li>
+                </ul>
+
+                <div class="controls">
+                    <label class="control-field" for="outputFormat">
+                        <span>Output format</span>
+                        <select id="outputFormat">
+                            <option value="glb">GLB</option>
+                            <option value="gltf">GLTF</option>
+                            <option value="stl">STL</option>
+                            <option value="step">STEP</option>
+                        </select>
+                    </label>
+                </div>
+
+                <div class="preview-panel">
+                    <div class="preview-panel__header">
+                        <div>
+                            <h2>Live preview</h2>
+                            <p class="preview-panel__subtext">Drag to rotate, scroll to zoom, and pan to inspect the model.</p>
+                        </div>
+                        <span id="previewStatus" class="preview-pill">Preview ready</span>
+                    </div>
+                    <canvas id="previewCanvas"></canvas>
+                </div>
+
+                <button id="convertBtn" class="convert-btn" type="button">Convert</button>
+                 <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                    <div id="progressFill" class="progress-bar__fill" style="width: 0%"></div>
+                </div>
+                <div id="progressLabel" class="progress-label">Progress</div>
+                <div class="summary-card" aria-live="polite">
+                    <div class="summary-card__title">Conversion summary</div>
+                    <div id="summaryText" class="summary-card__text">No model selected yet. Choose a file to begin.</div>
+                    <a id="downloadLink" class="download-link" hidden>
+                    Click here to download converted file
+                </a>
+                </div>
+            </section>
+        </main>
+
+        <script type="module" src="script.js?v=14"></script>
+    </body>
+</html>
