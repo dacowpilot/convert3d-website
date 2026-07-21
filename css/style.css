@@ -1,0 +1,332 @@
+:root {
+    color-scheme: dark;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at top left, rgba(110, 168, 255, 0.22), transparent 34%),
+        linear-gradient(135deg, #07111f, #1e2d3d);
+    color: #f4f7fb;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+}
+
+.page {
+    width: min(100%, 860px);
+}
+
+.hero {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 28px;
+    padding: 32px;
+    box-shadow: 0 24px 55px rgba(0, 0, 0, 0.28);
+    backdrop-filter: blur(16px);
+}
+
+h1 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-size: 2rem;
+}
+
+h2 {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.description {
+    margin-top: 0;
+    margin-bottom: 18px;
+    line-height: 1.7;
+    color: #dce7f5;
+    max-width: 720px;
+}
+
+.upload-box {
+    position: relative;
+    border: 2px dashed #6ea8ff;
+    border-radius: 20px;
+    padding: 32px 20px;
+    text-align: center;
+    background: rgba(110, 168, 255, 0.12);
+    transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.upload-box.is-dragging {
+    border-color: #9ed0ff;
+    transform: translateY(-2px);
+}
+
+.upload-box__content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.browse-btn {
+    display: inline-block;
+    margin-top: 6px;
+    border: none;
+    border-radius: 999px;
+    padding: 10px 16px;
+    background: #6ea8ff;
+    color: #07111f;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(110, 168, 255, 0.25);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.browse-btn:hover,
+.browse-btn:focus-visible {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 24px rgba(110, 168, 255, 0.32);
+    outline: none;
+}
+
+.browse-btn--secondary {
+    background: rgba(255, 255, 255, 0.16);
+    color: #f4f7fb;
+}
+
+.file-input {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.browse-btn {
+    position: relative;
+    z-index: 1;
+}
+
+.drop-zone__icon {
+    display: inline-block;
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+.drop-zone__title {
+    margin: 8px 0 6px;
+    font-size: 1.15rem;
+    font-weight: 600;
+}
+
+.drop-zone__hint,
+.drop-zone__formats {
+    margin: 0;
+    color: #dce7f5;
+}
+
+.drop-zone__formats {
+    margin-top: 8px;
+    font-size: 0.95rem;
+}
+
+.drop-zone__helper {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #c8d8eb;
+}
+
+.controls {
+    margin-top: 16px;
+}
+
+.control-field {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 6px;
+    font-weight: 600;
+}
+
+.control-field select {
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 10px;
+    padding: 10px 12px;
+    background: rgba(255, 255, 255, 0.12);
+    color: #f4f7fb;
+    cursor: pointer;
+}
+
+.control-field select:focus-visible {
+    outline: 2px solid #9ed0ff;
+    outline-offset: 2px;
+}
+
+.summary-card {
+    margin-top: 16px;
+    padding: 14px 16px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.summary-card__title {
+    font-size: 0.9rem;
+    color: #9ed0ff;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 6px;
+}
+
+.summary-card__text {
+    color: #f4f7fb;
+    line-height: 1.6;
+}
+
+.preview-panel {
+    margin-top: 18px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(7, 17, 31, 0.8);
+    padding: 16px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+}
+
+.preview-panel__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    color: #dce7f5;
+    font-size: 0.95rem;
+    gap: 12px;
+}
+
+.preview-panel__subtext {
+    margin: 4px 0 0;
+    color: #9fb8d6;
+    font-size: 0.86rem;
+}
+
+.preview-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 7px 11px;
+    border-radius: 999px;
+    background: rgba(110, 168, 255, 0.16);
+    color: #dce7f5;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+#previewCanvas {
+    display: block;
+    width: 100%;
+    min-height: 260px;
+    border-radius: 14px;
+    background: radial-gradient(circle at top, #17314f 0%, #07111f 70%);
+    border: 1px solid rgba(255,255,255,0.08);
+    touch-action: none;
+}
+
+.progress-bar {
+    margin-top: 16px;
+    height: 10px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.14);
+    overflow: hidden;
+}
+
+.progress-bar__fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #6ea8ff, #9ed0ff);
+    transition: width 0.2s ease;
+}
+
+.progress-label {
+    margin-top: 8px;
+    color: #dce7f5;
+    font-size: 0.95rem;
+}
+
+.convert-btn {
+    margin-top: 18px;
+    border: none;
+    border-radius: 999px;
+    padding: 12px 20px;
+    background: #6ea8ff;
+    color: #07111f;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.convert-btn:hover {
+    transform: translateY(-1px);
+}
+
+.convert-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.status-message {
+    margin-top: 12px;
+    min-height: 24px;
+    color: #dce7f5;
+    font-size: 0.95rem;
+}
+
+.download-link {
+    display: inline-block;
+    margin-top: 12px;
+    color: #9ed0ff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.download-link:hover {
+    text-decoration: underline;
+}
+
+.file-list {
+    list-style: none;
+    padding: 0;
+    margin: 16px 0 0;
+    display: grid;
+    gap: 8px;
+}
+
+.file-list li {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 12px 14px;
+    color: #f4f7fb;
+}
+
+.file-list__empty {
+    font-style: italic;
+    color: #c8d8eb;
+}
+
+.file-item__name {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.file-item__meta {
+    font-size: 0.9rem;
+    color: #c8d8eb;
+}
